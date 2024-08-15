@@ -1,0 +1,192 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  --text-color: #ffffff;
+  --bg-color: url(./assets/bg-mobile.jpg);
+  --border-color: rgba(255, 255, 255, 0.5);
+  --surface-color: rgba(255, 255, 255, 0.05);
+  --surface-color-hover: rgba(255, 255, 255, 0.02);
+  --highlight-color: rgba(255, 255, 255, 0.1);
+  --switch-bg-url: url(./assets/MoonStars.svg);
+  /* Outra maneira de fazer a movimentação do switch 
+    --switch-position: -64;
+  */
+}
+
+.light {
+  --text-color: #000000;
+  --bg-color: url(./assets/bg-mobile-light.jpg);
+  --border-color: rgba(0, 0, 0, 0.5);
+  --surface-color: rgba(0, 0, 0, 0.05);
+  --surface-color-hover: rgba(0, 0, 0, 0.02);
+  --highlight-color: rgba(0, 0, 0, 0.1);
+  --switch-bg-url: url(./assets/Sun.svg);
+  /* Outra maneira de fazer a movimentação do switch
+    --switch-position: 0; 
+  */
+}
+
+body {
+  /* 
+  background-image: url(./assets/bg-mobile.jpg);
+  background-repeat: no-repeat;
+  background-position: top center;
+  background-size: cover; 
+  */
+
+  /*background: color image repeat position/size; */
+  background: var(--bg-color) no-repeat top center/cover;
+}
+
+body * {
+  font-family: "Inter", sans-serif;
+  color: var(--text-color);
+}
+
+#container {
+  width: 360px;
+  margin: 56px auto 0px;
+  padding: 0 24px;
+}
+
+/* PROFILE 
+  Imagem é display inline por padrão, então o margin: auto
+  não funciona nela. 
+  Para funcionar o margin: auto pode alterar a imagem para display: block
+  Ou colocar a propriedade de alinhamento de texto no elemento pai #profile
+  text-align: center;
+  Mas se o elemento img for do tipo block, a propriedade align não terá funcionalidade no pai #profile
+*/
+#profile {
+  text-align: center;
+  padding: 24px;
+}
+
+#profile img {
+  width: 112px;
+  border: 2px solid var(--border-color);
+  border-radius: 50%;
+}
+
+#profile p {
+  font-weight: 500;
+  line-height: 24px;
+  margin-top: 8px;
+}
+
+/* SWITCH */
+#switch {
+  /*
+    O alinhamento do botão com o span funcionaria dessa forma, mas também tem uma outra forma, está no css do botão
+    display: flex;
+    align-items: center;
+  */
+  position: relative;
+  width: 64px;
+  margin: 4px auto;
+}
+
+#switch button {
+  background: #ffffff var(--switch-bg-url) no-repeat center;
+  width: 32px;
+  height: 32px;
+  border: none;
+  border-radius: 50%;
+
+  position: absolute;
+  /* Outra maneira de fazer a movimentação do switch
+    right: var(--switch-position);
+  */
+  z-index: 1;
+
+  /* Outra forma de realizar o alinhamento do botão com o span */
+  transform: translateY(-50%);
+  top: 50%;
+
+  left: 0;
+}
+
+.light #switch button {
+  right: 0;
+  left: initial;
+}
+
+#switch span {
+  display: block;
+  width: 64px;
+  height: 24px;
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 9999px;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+/* LINKS */
+ul {
+  list-style: none;
+
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  padding: 24px 0;
+}
+
+ul li a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 16px 24px;
+
+  background-color: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  text-decoration: none;
+  font-weight: 500;
+
+  transition: background 0.3s;
+}
+
+ul li a:hover {
+  background-color: var(--surface-color-hover);
+  border: 1px solid var(--text-color);
+}
+
+#social-links {
+  display: flex;
+  justify-content: center;
+
+  padding: 24px 0;
+
+  font-size: 24px;
+}
+
+#social-links a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 16px;
+
+  transition: background 0.3s;
+  border-radius: 50%;
+}
+
+#social-links a:hover {
+  background: var(--highlight-color);
+}
+
+footer {
+  padding: 24px 0;
+  text-align: center;
+  font-size: 14px;
+}
