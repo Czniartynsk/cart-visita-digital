@@ -109,12 +109,27 @@ body * {
   transform: translateY(-50%);
   top: 50%;
 
-  left: 0;
+  /* utilizando animação 
+    left: 0;
+  */
+
+  /* Nesse caso, não precisa colocar o forward, porque ele já cai no valor inicial do slide-in */
+  animation: slide-out 0.2s;
 }
 
 .light #switch button {
-  right: 0;
-  left: initial;
+  /*
+    Após colocado efeito de suavização da transição, não utiliza esse código, o código utilizado está no @keyframe 
+    right: 0;
+    left: initial; 
+  */
+
+  /* forwards faz com que o valor final da transição seja mantido, ou seja: left: 50%; */
+  animation: slide-in 0.2s forwards;
+}
+
+#switch button:hover {
+  outline: 8px solid var(--highlight-color);
 }
 
 #switch span {
@@ -201,5 +216,25 @@ footer {
 
   .light {
     --bg-url: url(./assets/bg-desktop-light.jpg);
+  }
+}
+
+/* animation */
+@keyframes slide-in {
+  from {
+    /* propriedade left do .light #switch button */
+    left: 0;
+  }
+  to {
+    left: 50%;
+  }
+}
+
+@keyframes slide-out {
+  from {
+    left: 50%;
+  }
+  to {
+    left: 0;
   }
 }
