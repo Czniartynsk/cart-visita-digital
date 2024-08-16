@@ -6,7 +6,7 @@
 
 :root {
   --text-color: #ffffff;
-  --bg-color: url(./assets/bg-mobile.jpg);
+  --bg-url: url(./assets/bg-mobile.jpg);
   --border-color: rgba(255, 255, 255, 0.5);
   --surface-color: rgba(255, 255, 255, 0.05);
   --surface-color-hover: rgba(255, 255, 255, 0.02);
@@ -19,7 +19,7 @@
 
 .light {
   --text-color: #000000;
-  --bg-color: url(./assets/bg-mobile-light.jpg);
+  --bg-url: url(./assets/bg-mobile-light.jpg);
   --border-color: rgba(0, 0, 0, 0.5);
   --surface-color: rgba(0, 0, 0, 0.05);
   --surface-color-hover: rgba(0, 0, 0, 0.02);
@@ -39,7 +39,8 @@ body {
   */
 
   /*background: color image repeat position/size; */
-  background: var(--bg-color) no-repeat top center/cover;
+  background: var(--bg-url) no-repeat top center/cover;
+  height: 100vh;
 }
 
 body * {
@@ -48,9 +49,10 @@ body * {
 }
 
 #container {
-  width: 360px;
-  margin: 56px auto 0px;
-  padding: 0 24px;
+  width: 100%;
+  max-width: 588px;
+  margin: 0 auto;
+  padding: 56px 24px;
 }
 
 /* PROFILE 
@@ -189,4 +191,15 @@ footer {
   padding: 24px 0;
   text-align: center;
   font-size: 14px;
+}
+
+/* meida queries */
+@media (min-width: 700px) {
+  :root {
+    --bg-url: url(./assets/bg-desktop.jpg);
+  }
+
+  .light {
+    --bg-url: url(./assets/bg-desktop-light.jpg);
+  }
 }
